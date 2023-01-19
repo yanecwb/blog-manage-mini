@@ -10,12 +10,14 @@
 		{
 			"path": "pages/login/index",
 			"style": {
+				"navigationBarBackgroundColor":"#587bfc",
 				"navigationBarTitleText": "登录"
 			}
 		},
 		{
 			"path": "pages/my/index",
 			"style": {
+				"navigationBarBackgroundColor":"#587bfc",
 				"navigationBarTitleText": "个人中心"
 			}
 		}
@@ -23,9 +25,9 @@
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "404",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarTitleText": "Flechazo博客管理台",
+		"navigationBarBackgroundColor": "#fff",
+		"backgroundColor": "#FaFaFa"
 	},
 	"tabBar": {
 		"color": "#888888",
@@ -48,5 +50,36 @@
 	  },
 	"easycom": {
 		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
-	}
+	},
+	"subPackages": [
+		{
+		  "root": "pages/base",
+		  "pages": [
+			{
+			  "path": "account/index",
+			  "style": {
+				"navigationBarTitleText": "账号管理"
+			  }
+			},
+			{
+				"path": "article/index",
+				"style": {
+				  "navigationBarTitleText": "文章管理"
+				}
+			  },
+			  {
+				"path": "leave-message/index",
+				"style": {
+				  "navigationBarTitleText": "留言管理"
+				}
+			  },
+			  {
+				"path": "resources/index",
+				"style": {
+				  "navigationBarTitleText": "资源管理"
+				}
+			  }
+		  ]
+		}
+	]
 }

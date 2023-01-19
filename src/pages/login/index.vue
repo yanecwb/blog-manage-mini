@@ -1,38 +1,48 @@
 <template>
   <view>
     <view class="bg-login">
-      <image
-        class="logo"
-        src="/static/login/logo.png"
-        draggable="false"
-      ></image>
+      <image class="logo" src="/static/logo.png" draggable="false"></image>
       <text class="logo-text">Flechazo</text>
     </view>
     <view class="cardcss">
       <u-form labelPosition="left" :model="formData">
         <u-form-item prop="formData.account" borderBottom>
           <u-input
-            v-model="formData.account"
+            v-model="formData.username"
             border="none"
             clearable
             prefixIcon="github-circle-fill"
             placeholder="账号"
             prefixIconStyle="font-size:50rpx"
             placeholderStyle="padding-left:10rpx;color:#ccc"
-            type="number"
+            type="text"
           />
         </u-form-item>
         <u-form-item prop="formData.pwd" borderBottom>
           <u-input
-            v-model="formData.pwd"
+            v-model="formData.password"
             border="none"
             clearable
             prefixIcon="lock"
             placeholder="密码"
             prefixIconStyle="font-size:50rpx"
             placeholderStyle="padding-left:10rpx;color:#ccc"
-            type="password"
+            :type="isPassword"
           />
+          <template #right>
+            <u-icon
+              v-if="isPassword == 'password'"
+              name="eye-off"
+              @click="isPassword = 'text'"
+              size="22"
+            />
+            <u-icon
+              v-else
+              name="eye-fill"
+              @click="isPassword = 'password'"
+              size="22"
+            />
+          </template>
         </u-form-item>
         <u-form-item borderBottom>
           <u-input
@@ -64,7 +74,7 @@
           @click="handleSubmit"
         />
         <text class="login-describe"
-          >Copyright © 2022 wueasy All Rights Reserved.</text
+          >Copyright © 2022 Flechazo All Rights Reserved.</text
         >
       </view>
     </view>
@@ -74,7 +84,7 @@
 .bg-login {
   width: 100vw;
   height: 400rpx;
-  background-image: url(/static/login/bg_login.png);
+  background-image: url("https://adminh5.demo.wueasy.com/static/images/login/bg_login.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   display: flex;
@@ -83,8 +93,8 @@
   flex-direction: column;
 
   .logo {
-    width: 140rpx;
-    height: 140rpx;
+    width: 160rpx;
+    height: 160rpx;
     padding-bottom: 36rpx;
   }
 
@@ -117,16 +127,18 @@
 
 <script>
 import drawPic from "./verificationCode";
+import { login } from "./service";
 export default {
   data() {
     return {
       formData: {
-        account: "",
-        pwd: "",
+        username: "123@qq.com",
+        password: "456",
         verificationCode: "",
         cacheVerCode: "",
       },
       isLoading: false,
+      isPassword: "password",
     };
   },
   methods: {
@@ -134,41 +146,52 @@ export default {
       drawPic.call(null, this.formData);
     },
     async handleSubmit() {
-      const messageFn = (message) => {
+      console.log('handleSubmit');
+      const messageFn = (message, url) => {
         this.$refs.uToast.show({
           message,
           position: "top",
           duration: 1000,
+          icon: url ? true : false,
+          type: url ? "success" : "default",
+          complete: () => {
+            url ? uni.switchTab({ url: "/pages/my/index" }) : "";
+          },
         });
       };
-      const { account, pwd, verificationCode, cacheVerCode } = this.formData;
-      if(!account){
-      	messageFn('请输入账号')
-      	return
+      const { username, password, verificationCode, cacheVerCode } =
+        this.formData;
+      if (!username) {
+        messageFn("请输入账号", null);
+        return;
       }
-      if(!pwd){
-      	messageFn('请输入密码')
-      	return
+      if (!password) {
+        messageFn("请输入密码", null);
+        return;
       }
-      if(!verificationCode || verificationCode.toUpperCase()  !== cacheVerCode){
-      	messageFn('验证码不正确')
-      	this.change()
-      	return
-      }
+        if (
+          !verificationCode ||
+          verificationCode.toUpperCase() !== cacheVerCode
+        ) {
+          messageFn("验证码不正确", null);
+          this.change();
+          return;
+        }
       this.isLoading = true;
-      setTimeout(() => {
-        this.isLoading = false;
-        uni.switchTab({
-          url: "/pages/my/index",
-        });
-      }, 2000);
+      const { userInfo } = await login(this.formData);
+      this.$store.commit("user/SAVE_USERINFO", userInfo);
+      this.isLoading = false;
+      messageFn("登录成功", "/pages/index/index");
     },
   },
   onLoad() {
+    uni.chooseLocation({
+      success:() => { }
+    })
     drawPic.call(null, this.formData);
   },
-  onShow(){
-	uni.hideHomeButton()
-  }
+  onShow() {
+    uni.hideHomeButton();
+  },
 };
 </script>
