@@ -10,6 +10,7 @@
 		{
 			"path": "pages/login/index",
 			"style": {
+				"navigationBarTextStyle": "white",
 				"navigationBarBackgroundColor":"#587bfc",
 				"navigationBarTitleText": "登录"
 			}
@@ -17,6 +18,7 @@
 		{
 			"path": "pages/my/index",
 			"style": {
+				"navigationBarTextStyle": "white",
 				"navigationBarBackgroundColor":"#587bfc",
 				"navigationBarTitleText": "个人中心"
 			}
@@ -36,14 +38,14 @@
 		"list": [
 		  {
 			"pagePath": "pages/index/index",
-			"iconPath": "static/tabbar/home.png",
-			"selectedIconPath": "static/tabbar/home-in.png",
+			"iconPath": "static/tabbar/code_gray.png",
+			"selectedIconPath": "static/tabbar/code_active.png",
 			"text": "首页"
 		  },
 		  {
 			"pagePath": "pages/my/index",
-			"iconPath": "static/tabbar/user.png",
-			"selectedIconPath": "static/tabbar/user-in.png",
+			"iconPath": "static/tabbar/extend_gray.png",
+			"selectedIconPath": "static/tabbar/extend_active.png",
 			"text": "个人中心"
 		  }
 		]
@@ -58,7 +60,8 @@
 			{
 			  "path": "account/index",
 			  "style": {
-				"navigationBarTitleText": "账号管理"
+				"navigationBarTitleText": "账号管理",
+				"enablePullDownRefresh": true
 			  }
 			},
 			{

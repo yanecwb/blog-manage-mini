@@ -1,7 +1,7 @@
 <template>
   <view>
     <view class="bg-login">
-      <image class="logo" src="/static/logo.png" draggable="false"></image>
+      <image class="logo" src="https://i.328888.xyz/2023/01/28/jWlht.png" draggable="false"></image>
       <text class="logo-text">Flechazo</text>
     </view>
     <view class="cardcss">
@@ -71,7 +71,7 @@
           :loading="isLoading"
           loadingText="正在登录"
           shape="circle"
-          @click="handleSubmit"
+          @tap="handleSubmit"
         />
         <text class="login-describe"
           >Copyright © 2022 Flechazo All Rights Reserved.</text
@@ -178,9 +178,13 @@ export default {
           return;
         }
       this.isLoading = true;
-      const { userInfo } = await login(this.formData);
-      this.$store.commit("user/SAVE_USERINFO", userInfo);
+      const { userInfo,code,msg } = await login(this.formData);
       this.isLoading = false;
+      if(code !== 200){
+        messageFn(msg,null) 
+        return
+      }
+      this.$store.commit("user/SAVE_USERINFO", userInfo);
       messageFn("登录成功", "/pages/index/index");
     },
   },

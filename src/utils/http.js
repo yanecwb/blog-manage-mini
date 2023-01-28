@@ -12,6 +12,11 @@ const http = ajax.create({
 // 添加请求拦截器
 http.interceptors.request.use(
   config => {
+    uni.showLoading({
+      title: '努力加载中',
+      mask: true
+    })
+    // uni.showNavigationBarLoading()
     return config
   },
   error => {
@@ -22,6 +27,8 @@ http.interceptors.request.use(
 // 添加响应拦截器
 http.interceptors.response.use(
   response => {
+    uni.hideLoading()
+    // uni.hideNavigationBarLoading()
     return response.data
   },
   error => {

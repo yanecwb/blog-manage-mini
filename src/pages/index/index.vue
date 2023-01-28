@@ -3,7 +3,7 @@
     <view class="box">
       <view class="index-top">
         <view class="indexTop-logo">
-          <image class="logo" src="/static/logo.png"></image>
+          <image class="logo" src="https://i.328888.xyz/2023/01/28/jWlht.png"></image>
           <text style="color: #333">Flechazo博客管理系统</text>
         </view>
         <view class="indexTop-text"
@@ -71,11 +71,11 @@ export default {
         ],
         [
           {
-            iconUrl: "https://i.328888.xyz/2023/01/19/HgrZc.png",
+            iconUrl: "https://i.328888.xyz/2023/01/28/jOOta.png",
             text: "登录日志",
           },
           {
-            iconUrl: "https://i.328888.xyz/2023/01/19/HgrZc.png",
+            iconUrl: "https://i.328888.xyz/2023/01/28/jtqvv.png",
             text: "操作日志",
           },
         ],
