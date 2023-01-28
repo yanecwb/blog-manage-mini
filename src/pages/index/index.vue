@@ -10,32 +10,31 @@
           >一个通用管理系统，提供通用的基础功能、权限控制、动态页面等。</view
         >
       </view>
-    </view>
-
-    <view>
-      <h2>基础功能</h2>
-      <view class="home-menu">
-        <view
-          class="menu-box"
-          v-for="(item, index) in menuList[0]"
-          :key="index"
-          @click="handleToMenu(item.url)"
-        >
-          <u-icon :name="item.iconUrl" color="#5677fc" size="30" />
-          <text class="menu-text">{{ item.text }}</text>
+      <view>
+        <h2>基础功能</h2>
+        <view class="home-menu">
+          <view
+            class="menu-box"
+            v-for="(item, index) in menuList[0]"
+            :key="index"
+            @click="handleToMenu(item.url)"
+          >
+            <u-icon :name="item.iconUrl" color="#5677fc" size="30" />
+            <text class="menu-text">{{ item.text }}</text>
+          </view>
         </view>
       </view>
-    </view>
-    <view style="margin-top: 38rpx">
-      <h2>日志查询</h2>
-      <view class="home-menu" style="justify-content: start">
-        <view
-          class="menu-box"
-          v-for="(item, index) in menuList[1]"
-          :key="index"
-        >
-          <u-icon :name="item.iconUrl" color="#5677fc" size="30" />
-          <text class="menu-text">{{ item.text }}</text>
+      <view style="margin-top: 38rpx">
+        <h2>日志查询</h2>
+        <view class="home-menu" style="justify-content: start">
+          <view
+            class="menu-box"
+            v-for="(item, index) in menuList[1]"
+            :key="index"
+          >
+            <u-icon :name="item.iconUrl" color="#5677fc" size="30" />
+            <text class="menu-text">{{ item.text }}</text>
+          </view>
         </view>
       </view>
     </view>
@@ -71,7 +70,7 @@ export default {
         ],
         [
           {
-            iconUrl: "https://i.328888.xyz/2023/01/28/jOOta.png",
+            iconUrl: "https://i.328888.xyz/2023/01/28/jOdEX.png",
             text: "登录日志",
           },
           {

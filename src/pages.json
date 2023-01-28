@@ -11,7 +11,7 @@
 			"path": "pages/login/index",
 			"style": {
 				"navigationBarTextStyle": "white",
-				"navigationBarBackgroundColor":"#587bfc",
+				"navigationBarBackgroundColor":"#5677fc",
 				"navigationBarTitleText": "登录"
 			}
 		},
@@ -19,7 +19,7 @@
 			"path": "pages/my/index",
 			"style": {
 				"navigationBarTextStyle": "white",
-				"navigationBarBackgroundColor":"#587bfc",
+				"navigationBarBackgroundColor":"#5677fc",
 				"navigationBarTitleText": "个人中心"
 			}
 		}
