@@ -1,18 +1,10 @@
 {
+	"lazyCodeLoading":"requiredComponents",
 	"pages": [ 
 		{
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "首页"
-			}
-		},
-		
-		{
-			"path": "pages/login/index",
-			"style": {
-				"navigationBarTextStyle": "white",
-				"navigationBarBackgroundColor":"#5677fc",
-				"navigationBarTitleText": "登录"
 			}
 		},
 		{
@@ -22,12 +14,19 @@
 				"navigationBarBackgroundColor":"#5677fc",
 				"navigationBarTitleText": "个人中心"
 			}
+		},
+		{
+			"path": "pages/login/index",
+			"style": {
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor":"#5677fc",
+				"navigationBarTitleText": "登录"
+			}
 		}
-		
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "Flechazo博客管理台",
+		"navigationBarTitleText": "Flechazo管理台",
 		"navigationBarBackgroundColor": "#fff",
 		"backgroundColor": "#FaFaFa"
 	},

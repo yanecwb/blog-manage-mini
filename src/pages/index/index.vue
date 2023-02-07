@@ -4,12 +4,13 @@
       <view class="index-top">
         <view class="indexTop-logo">
           <image class="logo" src="https://i.328888.xyz/2023/01/28/jWlht.png"></image>
-          <text style="color: #333">Flechazo博客管理系统</text>
+          <text style="color: #333">Flechazo管理系统</text>
         </view>
         <view class="indexTop-text"
           >一个通用管理系统，提供通用的基础功能、权限控制、动态页面等。</view
         >
       </view>
+      <u-notice-bar :text="`v${version}已发布上线，欢迎体验`"  color="#333" bgColor=""></u-notice-bar>
       <view>
         <h2>基础功能</h2>
         <view class="home-menu">
@@ -79,9 +80,13 @@ export default {
           },
         ],
       ],
+      version:''
     };
   },
-  onLoad() {},
+  onLoad() {
+    const accountInfo = uni.getAccountInfoSync();  
+    this.version = accountInfo.miniProgram.version
+  },
   methods: {
     handleToMenu(url) {
       uni.navigateTo({ url });
@@ -96,6 +101,10 @@ export default {
   .box {
     margin: -40rpx -20rpx;
     background-color: #fff;
+    ::v-deep .uicon-volume{
+      color: #1296db !important;
+      font-weight: 700 !important;
+    }
   }
 }
 .home-menu {

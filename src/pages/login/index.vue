@@ -7,75 +7,29 @@
     <view class="cardcss">
       <u-form labelPosition="left" :model="formData">
         <u-form-item prop="formData.account" borderBottom>
-          <u-input
-            v-model="formData.username"
-            border="none"
-            clearable
-            prefixIcon="github-circle-fill"
-            placeholder="账号"
-            prefixIconStyle="font-size:50rpx"
-            placeholderStyle="padding-left:10rpx;color:#ccc"
-            type="text"
-          />
+          <u-input v-model="formData.username" border="none" clearable prefixIcon="github-circle-fill" placeholder="账号"
+            prefixIconStyle="font-size:50rpx" placeholderStyle="padding-left:10rpx;color:#ccc" type="text" />
         </u-form-item>
         <u-form-item prop="formData.pwd" borderBottom>
-          <u-input
-            v-model="formData.password"
-            border="none"
-            clearable
-            prefixIcon="lock"
-            placeholder="密码"
-            prefixIconStyle="font-size:50rpx"
-            placeholderStyle="padding-left:10rpx;color:#ccc"
-            :type="isPassword"
-          />
+          <u-input v-model="formData.password" border="none" clearable prefixIcon="lock" placeholder="密码"
+            prefixIconStyle="font-size:50rpx" placeholderStyle="padding-left:10rpx;color:#ccc" :type="isPassword" />
           <template #right>
-            <u-icon
-              v-if="isPassword == 'password'"
-              name="eye-off"
-              @click="isPassword = 'text'"
-              size="22"
-            />
-            <u-icon
-              v-else
-              name="eye-fill"
-              @click="isPassword = 'password'"
-              size="22"
-            />
+            <u-icon v-if="isPassword == 'password'" name="eye-off" @click="isPassword = 'text'" size="22" />
+            <u-icon v-else name="eye-fill" @click="isPassword = 'password'" size="22" />
           </template>
         </u-form-item>
         <u-form-item borderBottom>
-          <u-input
-            v-model="formData.verificationCode"
-            border="none"
-            clearable
-            prefixIcon="fingerprint"
-            placeholder="验证码"
-            prefixIconStyle="font-size:50rpx"
-            placeholderStyle="padding-left:10rpx;color:#ccc"
-          />
+          <u-input v-model="formData.verificationCode" border="none" clearable prefixIcon="fingerprint"
+            placeholder="验证码" prefixIconStyle="font-size:50rpx" placeholderStyle="padding-left:10rpx;color:#ccc" />
           <template #right>
-            <canvas
-              canvas-id="canvas"
-              @click="change"
-              style="width: 90px; height: 30px"
-            ></canvas>
+            <canvas canvas-id="canvas" @click="change" style="width: 90px; height: 30px"></canvas>
           </template>
         </u-form-item>
       </u-form>
       <u-toast ref="uToast" />
       <view class="login-btn">
-        <u-button
-          text="登录"
-          type="primary"
-          :loading="isLoading"
-          loadingText="正在登录"
-          shape="circle"
-          @tap="handleSubmit"
-        />
-        <text class="login-describe"
-          >Copyright © 2022 Flechazo All Rights Reserved.</text
-        >
+        <u-button text="登录" type="primary" :loading="isLoading" loadingText="正在登录" shape="circle" @tap="handleSubmit" />
+        <text class="login-describe">Copyright © 2022 Flechazo All Rights Reserved.</text>
       </view>
     </view>
   </view>
@@ -107,11 +61,13 @@
 .cardcss {
   padding: 90rpx;
   padding-top: 50rpx;
+
   .login-btn {
     margin-top: 100rpx;
     display: flex;
     justify-content: center;
     flex-direction: column;
+
     .login-describe {
       color: #a7a7a7;
       font-size: 20rpx;
@@ -120,6 +76,7 @@
     }
   }
 }
+
 ::v-deep .u-form-item__body {
   padding: 36rpx 0 !important;
 }
@@ -169,29 +126,34 @@ export default {
         messageFn("请输入密码", null);
         return;
       }
-        if (
-          !verificationCode ||
-          verificationCode.toUpperCase() !== cacheVerCode
-        ) {
-          messageFn("验证码不正确", null);
-          this.change();
-          return;
-        }
+      // if (
+      //   !verificationCode ||
+      //   verificationCode.toUpperCase() !== cacheVerCode
+      // ) {
+      //   messageFn("验证码不正确", null);
+      //   this.change();
+      //   return;
+      // }
       this.isLoading = true;
-      const { userInfo,code,msg } = await login(this.formData);
-      this.isLoading = false;
-      if(code !== 200){
-        messageFn(msg,null) 
+      try {
+        const { userInfo, code, msg } = await login(this.formData);
+        this.isLoading = false;
+        if (code !== 200) {
+        messageFn(msg, null)
         return
       }
       this.$store.commit("user/SAVE_USERINFO", userInfo);
       messageFn("登录成功", "/pages/index/index");
+      } catch (error) {
+        this.isLoading = false;
+      }
+     
     },
   },
   onLoad() {
-    uni.chooseLocation({
-      success:() => { }
-    })
+    // uni.chooseLocation({
+    //   success:() => { }
+    // })
     drawPic.call(null, this.formData);
   },
   onShow() {

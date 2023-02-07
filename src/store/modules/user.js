@@ -12,7 +12,8 @@ const userInfo ={
     },
     getters:{},
   }
-  userInfo.state.userInfo.id ? "" : uni.redirectTo({url:'/pages/login/index'})
+  userInfo.state.userInfo?.id ? "" : uni.redirectTo({url:'/pages/login/index'})
+  console.log( userInfo.state.userInfo?.id,userInfo.state);
   export const userStore = ()=>{
     return userInfo.state.userInfo
   }

@@ -20,6 +20,9 @@ http.interceptors.request.use(
     return config
   },
   error => {
+    uni.hideLoading()
+    console.log(error);
+    uni.showModal({content:error,showCancel:false})
     return Promise.reject(error)
   }
 )
@@ -32,6 +35,9 @@ http.interceptors.response.use(
     return response.data
   },
   error => {
+    uni.hideLoading()
+    console.log(error);
+    uni.showModal({title:'请求错误',content:toString(error.data),showCancel:false})
     return Promise.reject(error)
   }
 )
