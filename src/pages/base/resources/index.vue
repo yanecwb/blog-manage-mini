@@ -9,8 +9,8 @@
         <u-swipe-action-item :options="options2" @click="handleClick" v-for="item in urlList[index]" :name="item">
           <view class="swipe-action u-border-top u-border-bottom">
             <view class="swipe-action__content">
-              <view class="swipe-action__content__text">{{ item.url }}</view>
-              <image :src="item.url" style="width: 70rpx; height: 70rpx; border-radius: 10rpx;" @click="handlePreviewImage(item.url)"></image>
+              <view class="swipe-action__content__text" @click="toWebView(item.url)">{{ item.url }}</view>
+              <!-- <image :src="item.url" style="width: 70rpx; height: 70rpx; border-radius: 10rpx;" @click="handlePreviewImage(item.url)"></image> -->
             </view>
           </view>
         </u-swipe-action-item>
@@ -115,6 +115,11 @@ export default {
       await updateResources({id:this.update_resourcesId,url:this.changeText})
       this.showChangeModal = false;
       this._getResourcesList()
+    },
+    toWebView(url){
+      uni.navigateTo({
+						url: '/pages/webView/index?url='+url
+					});
     }
   },
   onLoad() {
@@ -151,7 +156,6 @@ export default {
     .swipe-action__content__text {
      
       color: #52b0fd;
-      width: 80%;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;

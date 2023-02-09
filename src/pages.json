@@ -22,6 +22,12 @@
 				"navigationBarBackgroundColor":"#5677fc",
 				"navigationBarTitleText": "登录"
 			}
+		},
+		{
+			"path": "pages/webView/index",    
+			"style": {
+				"navigationBarTitleText": " "   
+			}
 		}
 	],
 	"globalStyle": {
