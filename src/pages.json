@@ -1,93 +1,100 @@
 {
-	"lazyCodeLoading":"requiredComponents",
-	"pages": [ 
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "首页"
-			}
-		},
-		{
-			"path": "pages/my/index",
-			"style": {
-				"navigationBarTextStyle": "white",
-				"navigationBarBackgroundColor":"#5677fc",
-				"navigationBarTitleText": "个人中心"
-			}
-		},
-		{
-			"path": "pages/login/index",
-			"style": {
-				"navigationBarTextStyle": "white",
-				"navigationBarBackgroundColor":"#5677fc",
-				"navigationBarTitleText": "登录"
-			}
-		},
-		{
-			"path": "pages/webView/index",    
-			"style": {
-				"navigationBarTitleText": " "   
-			}
-		}
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "Flechazo管理台",
-		"navigationBarBackgroundColor": "#fff",
-		"backgroundColor": "#FaFaFa"
-	},
-	"tabBar": {
-		"color": "#888888",
-		"selectedColor": "#0970D9",
-		"backgroundColor": "#ffffff",
-		"list": [
-		  {
-			"pagePath": "pages/index/index",
-			"iconPath": "static/tabbar/code_gray.png",
-			"selectedIconPath": "static/tabbar/code_active.png",
-			"text": "首页"
-		  },
-		  {
-			"pagePath": "pages/my/index",
-			"iconPath": "static/tabbar/extend_gray.png",
-			"selectedIconPath": "static/tabbar/extend_active.png",
-			"text": "个人中心"
-		  }
-		]
-	  },
-	"easycom": {
-		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
-	},
-	"subPackages": [
-		{
-		  "root": "pages/base",
-		  "pages": [
-			{
-			  "path": "account/index",
-			  "style": {
-				"navigationBarTitleText": "账号管理",
-				"enablePullDownRefresh": true
-			  }
-			},
-			{
-				"path": "article/index",
-				"style": {
-				  "navigationBarTitleText": "文章管理"
-				}
-			  },
-			  {
-				"path": "leave-message/index",
-				"style": {
-				  "navigationBarTitleText": "留言管理"
-				}
-			  },
-			  {
-				"path": "resources/index",
-				"style": {
-				  "navigationBarTitleText": "资源管理"
-				}
-			  }
-		  ]
-		}
-	]
+  "lazyCodeLoading": "requiredComponents",
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "首页"
+      }
+    },
+    {
+      "path": "pages/my/index",
+      "style": {
+        "navigationBarTextStyle": "white",
+        "navigationBarBackgroundColor": "#5677fc",
+        "navigationBarTitleText": "个人中心"
+      }
+    },
+    {
+      "path": "pages/login/index",
+      "style": {
+        "navigationBarTextStyle": "white",
+        "navigationBarBackgroundColor": "#5677fc",
+        "navigationBarTitleText": "登录"
+      }
+    },
+    {
+      "path": "pages/webView/index",
+      "style": {
+        "navigationBarTitleText": " "
+      }
+    },
+    {
+      "path": "pages/wx/movable-view/index",
+      "style": {
+        "navigationBarTitleText": "仿微信下拉显示小程序"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "Flechazo管理台",
+    "navigationBarBackgroundColor": "#fff",
+    "backgroundColor": "#FaFaFa"
+  },
+  "tabBar": {
+    "color": "#888888",
+    "selectedColor": "#0970D9",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/tabbar/code_gray.png",
+        "selectedIconPath": "static/tabbar/code_active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "iconPath": "static/tabbar/extend_gray.png",
+        "selectedIconPath": "static/tabbar/extend_active.png",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "easycom": {
+    "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue",
+    "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+  },
+  "subPackages": [
+    {
+      "root": "pages/base",
+      "pages": [
+        {
+          "path": "account/index",
+          "style": {
+            "navigationBarTitleText": "账号管理",
+            "enablePullDownRefresh": true
+          }
+        },
+        {
+          "path": "article/index",
+          "style": {
+            "navigationBarTitleText": "文章管理"
+          }
+        },
+        {
+          "path": "leave-message/index",
+          "style": {
+            "navigationBarTitleText": "留言管理"
+          }
+        },
+        {
+          "path": "resources/index",
+          "style": {
+            "navigationBarTitleText": "资源管理"
+          }
+        }
+      ]
+    }
+  ]
 }
